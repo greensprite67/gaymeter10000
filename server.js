@@ -3,9 +3,7 @@ const app = express();
 const port = 3000;
 const cors = require('cors');
 
-app.use(cors({
-  origin: ["http://localhost:3000", "http://127.0.0.1:5500", "http://localhost:5500", "http://127.0.0.1:5500/"]
-})); 
+app.use(cors())
 
 app.use(express.json()); 
 
@@ -17,14 +15,17 @@ app.get('/message', (req, res) => {
   res.json({ message: 'fob peak lol ' });
 });
 
+app.get("/activateserver", (req, res) => {
+  res.send("Server is active");
+});
 
 const gayArray = [
   { name: "straight", value: -20 },
   { name: "boi", value: 10 },
-  { name: "master", value: 40 },  
+  { name: "master", value: 50 },  
   { name: "dev", value: 15 },
   { name: "gay", value: 100 },
-  { name: "gamer", value: 30 },
+  { name: "gamer", value: 40 },
   { name: "ibuslol", value: 67 },
   { name: "ry", value: 20 },
   { name: "XD", value: 20 },
@@ -52,6 +53,7 @@ const gayArray = [
   { name: "baka", value: 20 },
   { name: "nya", value: 20 },
   { name: "furry", value: 30 },
+  { name: "sholkias", value: 99.67 },
 ];
 
 const descriptionArray = [
@@ -93,7 +95,7 @@ async function measureGayness(username) {
     if (simwords.length > 1) {
       for (let j = 0; j < simwords.length; j++) {
         var dist = clmatch.distance(sname[i], simwords[j]);
-        if (dist < sname[i].length * 2) {
+        if (dist < sname[i].length * 1.6) {
           var simperc = (1 - (dist / simwords[j].length * 0.5));
           gaypercent += ((gayArray.find(item => item.name === simwords[j]).value)/simwords.length)*simperc;
         };
@@ -102,7 +104,7 @@ async function measureGayness(username) {
     else {
       var dist = clmatch.distance(sname[i], simwords[0]);
       var simperc = (1 - (dist / simwords[0].length * 0.5));
-      if (dist < sname[i].length * 2) {
+      if (dist < sname[i].length * 1.6) {
         var val = gayArray.find(item => item.name === simwords[0]).value;
         gaypercent += val * simperc;
       };
@@ -110,14 +112,14 @@ async function measureGayness(username) {
   };  
 
   for (let i = 0; i < descriptionArray.length; i++) {
-    if (gaypercent >= descriptionArray[i].min && gaypercent < descriptionArray[i].max) {
+    if (gaypercent >= descriptionArray[i].min && gaypercent <= descriptionArray[i].max) {
       console.log("Description: " + descriptionArray[i].description);
       description = descriptionArray[i].description;
     }
   };
 
   var multiplier = 1;
-  if (charperc > 1.5) {
+  if (charperc > 2) {
     multiplier = multiplier / charperc;
   };
   if (Number.isNaN(gaypercent)) {

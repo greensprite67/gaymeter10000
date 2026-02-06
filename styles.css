@@ -88,6 +88,35 @@
     background-size: contain;
     color: white;
 }
+
+#loadingdiv {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: hsl(0, 0%, 100%);
+    z-index: 10000;
+    display: block;
+    text-align: center;
+}
+
+#skiploadbtn {
+    display: none;
+    width: 8rem;
+    height: 2rem;
+    font-weight: bold;
+    background-color: hsl(218, 100%, 50%);
+    color: hsl(0, 0%, 100%);
+    justify-self: center;
+    align-self: center;
+}
+
+#welcom {
+    font-size: 2rem;
+    font-weight: bold;
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
+    background-clip: text;
+    color: transparent;
+}
 body {
     text-align: justify;
     font-family: Arial, sans-serif;
