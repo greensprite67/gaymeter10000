@@ -16,7 +16,7 @@ app.get('/message', (req, res) => {
 });
 
 app.get("/activateserver", (req, res) => {
-  res.send("Server is active");
+  res.json({message: "Server is active"});
 });
 
 const gayArray = [
@@ -72,7 +72,10 @@ const descriptionArray = [
   {min: 150, max: 300, description: "ULTRAGAY 🏳️‍🌈🏳️‍🌈🏳️‍🌈💥💥💥"}
 ];
 
+
+
 async function measureGayness(username) {
+  const translatte = require('translatte');
   const clmatch = require('closest-match');
   const WordsNinjaPack = require('wordsninja');
   const WordsNinja = new WordsNinjaPack();
@@ -86,46 +89,62 @@ async function measureGayness(username) {
   const lname = username.toLowerCase();
   const charperc = lname.length / 10;
   const sname = WordsNinja.splitSentence(lname)
-  console.log("sname: " + sname);
+  var aname = lname;
   for (let i = 0; i < sname.length; i++) {
-    var simwords = clmatch.closestMatch(sname[i], gayArray.map(item => item.name), true);
-    if (simwords.length === 0) {
-      break;
-    }
-    if (simwords.length > 1) {
-      for (let j = 0; j < simwords.length; j++) {
-        var dist = clmatch.distance(sname[i], simwords[j]);
-        if (dist < sname[i].length * 1.2) {
-          var simperc = (1 - (dist / simwords[j].length * 0.5));
-          gaypercent += ((gayArray.find(item => item.name === simwords[j]).value)/simwords.length)*simperc;
-        };
+    aname = aname.replace(sname[i], "");
+    console.log("aname: " + aname);
+  }  
+  
+  return translatte(aname, { from: 'auto', to: 'en' }).then(res => {
+    aname = res.text;
+    console.log("aname: " + aname);
+    WordsNinja.splitSentence(aname).forEach(word => {
+      sname.push(word);
+    });
+  }).catch(err => {
+  })
+  .then(() => {
+    for (let i = 0; i < sname.length; i++) {
+      var simwords = clmatch.closestMatch(sname[i], gayArray.map(item => item.name), true);
+      if (simwords.length === 0) {
+        break;
       }
-    }
-    else {
-      var dist = clmatch.distance(sname[i], simwords[0]);
-      var simperc = (1 - (dist / simwords[0].length * 0.5));
-      if (dist < sname[i].length * 1.2) {
-        var val = gayArray.find(item => item.name === simwords[0]).value;
-        gaypercent += val * simperc;
+      if (simwords.length > 1) {
+        for (let j = 0; j < simwords.length; j++) {
+          var dist = clmatch.distance(sname[i], simwords[j]);
+          if (dist < sname[i].length * 1.2) {
+            var simperc = (1 - (dist / simwords[j].length * 0.5));
+            gaypercent += ((gayArray.find(item => item.name === simwords[j]).value)/simwords.length)*simperc;
+          };
+        }
+      }
+      else {
+        var dist = clmatch.distance(sname[i], simwords[0]);
+        var simperc = (1 - (dist / simwords[0].length * 0.5));
+        if (dist < sname[i].length * 1.2) {
+          var val = gayArray.find(item => item.name === simwords[0]).value;
+          gaypercent += val * simperc;
+        };
       };
-    };
-  };  
+    };  
 
-  var multiplier = 1;
-  if (charperc > 2) {
-    multiplier = multiplier / charperc;
-  };
-  if (Number.isNaN(gaypercent)) {
-    gaypercent = 0;
-  }
-  gaypercent = gaypercent * multiplier;
-  for (let i = 0; i < descriptionArray.length; i++) {
-    if (gaypercent >= descriptionArray[i].min && gaypercent <= descriptionArray[i].max) {
-      console.log("Description: " + descriptionArray[i].description);
-      description = descriptionArray[i].description;
+    var multiplier = 1;
+    if (charperc > 2) {
+      multiplier = multiplier / charperc;
+    };
+    if (Number.isNaN(gaypercent)) {
+      gaypercent = 0;
     }
-  };
-  return [gaypercent.toFixed(2), description];
+    gaypercent = gaypercent * multiplier;
+    for (let i = 0; i < descriptionArray.length; i++) {
+      if (gaypercent >= descriptionArray[i].min && gaypercent <= descriptionArray[i].max) {
+        console.log("Description: " + descriptionArray[i].description);
+        description = descriptionArray[i].description;
+      }
+    };
+    console.log("sname: " + sname);
+    return [gaypercent.toFixed(2), description];
+  });
 };
 
 

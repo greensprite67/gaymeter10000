@@ -21,7 +21,7 @@
 #tabdiv {
     position: absolute;
     width: 12rem;
-    height: 50rem;
+    height: 28rem;
     background-color: rgb(255, 255, 255);
     border: 2px solid black;
     display: none;
@@ -130,6 +130,22 @@
     background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
     background-clip: text;
     color: transparent;
+}
+
+#loader {
+    float: left;
+    margin-top: 2rem;
+    margin-left: 5rem;
+    margin-bottom: 2rem;
+    width: 25rem;
+}
+
+#anotherlogo {
+    margin-top: 5rem;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5rem;
+    width: 15rem;
 }
 body {
     text-align: justify;
