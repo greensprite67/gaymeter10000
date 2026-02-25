@@ -54,7 +54,7 @@ const gayArray = [
   { name: "nya", value: 20 },
   { name: "furry", value: 30 },
   { name: "sholkias", value: 99.67 },
-  { name: "GG_Chrome", value: 67.67}, //he bribed me
+  { name: "GGChrome", value: 67.67}, //he bribed me
 ];
 
 const descriptionArray = [
