@@ -60,13 +60,15 @@
       <button id="rollbtn">Measure gayness</button>
       <br>
     </form> 
-    <h1 id="tex">Awaiting results...</h1>
+    <h1 id="tex">type yo user twin</h1>
     <h1 class="divtxt" id="desc"></h1>
   </div>
     <script>
       const button = document.getElementById('rollbtn');
       const input = document.getElementById('usernameInput');
+      const tex = document.getElementById('tex');
       button.addEventListener("click", function(event) {
+        tex.innerText = "Awaiting results..."  
         event.preventDefault();
         const usname = input.value;
         fetch("https://gaymeter3000-2.onrender.com/gaypercent", {
