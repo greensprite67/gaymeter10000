@@ -71,7 +71,7 @@
         tex.innerText = "Awaiting results..."  
         event.preventDefault();
         const usname = input.value;
-        fetch("https://gaymeter3000-2.onrender.com/gaypercent", {
+        fetch("https://peakestgaymeter.vercel.app/gaypercent", {
           method:"POST",
           headers:{
             "Content-Type": "application/json"
@@ -209,7 +209,7 @@
         setTimeout(() => {
           async function checkforserver() {
             try {
-              const response = await fetch("https://gaymeter3000-2.onrender.com/activateserver", {
+              const response = await fetch("https://peakestgaymeter.vercel.app/activateserver", {
                 method:"GET",
                 headers: {
                   "Content-Type": "application/json"
