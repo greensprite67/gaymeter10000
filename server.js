@@ -68,8 +68,10 @@ const descriptionArray = [
   {min: 70, max: 80, description: "Bro is gay and proud of it 🌈🏳️‍🌈"},
   {min: 80, max: 90, description: "Bro is very gay and loves it 🌈🏳️‍🌈💖"},
   {min: 90, max: 101, description: "Bro is the gayest of them all 🌈🏳️‍🌈💖👑"},
-  {min: 101, max: 150, description: "MEGAGAY 🌈🏳️‍🌈💥💥💥"},
-  {min: 150, max: 300, description: "ULTRAGAY 🏳️‍🌈🏳️‍🌈🏳️‍🌈💥💥💥"}
+  {min: 101, max: 200, description: "BRO IS SO GAY HE BROKE THE BAR💥💥💥"},
+  {min: 200, max: 300, description: "ULTRAGAY 🏳️‍🌈🏳️‍🌈🏳️‍🌈💥💥💥"},
+  {min: 300, max: 1000, description: "ULTRAMEGAGAY 🌈🏳️‍🌈💖👑💥💥💥"},
+  {min: 1000, max: 10000, description: "son 😭😭😭"},
 ];
 
 

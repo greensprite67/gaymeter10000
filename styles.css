@@ -2,10 +2,18 @@
     background-color: hsl(0, 0%, 0%);
     font-size: 2rem;
     font-weight: bold;
-    width: 100vw;
-    height: 3rem;
+    width: if(media(width < 800px): 150%; else: 100%);
+    height: fit-content;
+    padding-bottom: 0.3rem;
     text-align: center;
     margin: 0;
+
+}
+* {
+  font-family: "Archivo Black", sans-serif;
+}
+#menutitle {
+    font-size: 2rem;
 }
 
 #tabbtn {
@@ -21,40 +29,55 @@
 #tabdiv {
     position: absolute;
     width: 12rem;
-    height: 28rem;
+    height: 38rem;
     background-color: rgb(255, 255, 255);
-    border: 2px solid black;
+    border-radius: 0.5rem;
     display: none;
 }
 #tabdivtitle {
-    margin-top: 6rem;
+    margin-top: 4rem;
     position: absolute;
 }
 .btndivtitle {
-    margin-top: 8rem;
+    margin-top: 4rem;
+    width: inherit;
     position: absolute;
     display: none;
 }
 
 .tabdivbtn {
-    width: 10rem;
-    height: 2rem;
-    margin: 1rem;
+    width: 11rem;
+    height: 3rem;
+    margin-top: 2rem;
+    margin-left: 0.5rem;
+    margin-right: 0,5rem;
     font-weight: bold;
     font-size: 1.4rem;
     background-color: hsl(218, 100%, 50%);
     color: hsl(0, 0%, 100%);
 }
 
-#togbtn {
-    width: 10rem;
-    height: 2rem;
-    margin: 1rem;
-    font-weight: bold;
-    font-size: 1rem;
-    font-weight: bold;
-    background-color: black;
-    color: darkgray;
+
+#contcontent {
+    padding: 1rem;
+}
+#infotext {
+    padding: 1rem;
+}
+#infotitle {
+    font-size: 2rem;
+}
+#settingstitle {
+    font-size: 2rem;
+}
+#conttitle {
+    font-size: 1.4rem;
+}
+
+#settingscontent {
+    display: flexbox;
+    justify-content: center;
+    align-items: center;
 }
 
 #container {
@@ -63,27 +86,84 @@
 #rollbtn {
     background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
     margin-top: 1rem;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    width: 12rem;
+    width: 14rem;
     height: 3rem;
 }
 
+.bordneed {
+    border: 0.2rem solid black;
+}
+
+
+button {
+    cursor: pointer;
+    transition: transform 0.1s ease, filter 0.1s ease;
+    border-radius: 0.5rem;
+    border: 0.2rem solid black;
+}
+
+button:active {
+    transform:scale(0.95); 
+}
+
+button:hover {
+    filter: brightness(0.85);
+}
+
 #usernameInput {
-    width: 16rem;
+    width: 18rem;
     height: 2rem;    
     font-weight: bold;
     font-size: 1.2rem;
-    border: 2px solid black;
+    border-radius: 0.5rem;
 }
 
 #gaydiv {
     margin-top: 1.5rem;
     margin-left: 14rem;
     margin-right: 4rem;
-    width: fit-content;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    width: if(media(width < 1000px):fit-content; else: 34rem);
+    height: fit-content;
+    display: flexbox;
     background-color: rgb(255, 255, 255);
 }
+
+#gbar {
+    width: 20rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    transform: scaleX(-1);
+}
+
+#gbararrow {
+    width: 1rem;
+    height: 2rem;
+    position: absolute;
+    left: -0.4rem;
+    top: 1.2rem;
+}
+
+#gbarl {
+    position: absolute;
+    box-sizing: border-box;
+    background-color: transparent;
+    left: 0;
+    width: 20rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: 0.2rem solid black;
+    z-index: 0;
+}
+#imgcontainer {
+    position: relative;
+    display: inline-block;
+}
+
+
 
 #tex {
     font-size: 2rem;
@@ -93,60 +173,39 @@
     color: transparent;
 }
 
+
+#descdiv {
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+#togbtn {
+    width: 11rem;
+    height: 3rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
+    font-weight: bold;
+    font-size: 0.8rem;
+    font-weight: bold;
+    background-color: black;
+    color: darkgray;
+}
+
 #skebobbtn {
-    width: 10rem;
-    height: 2rem;
-    margin: 1rem;
+    width: 11rem;
+    height: 3rem;
+    margin-left: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    margin-right: 0.5rem;
     font-weight: bold;
     background-image: url(skebob.jpg);
     background-size: contain;
     color: white;
 }
 
-#loadingdiv {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: hsl(0, 0%, 100%);
-    z-index: 10000;
-    display: block;
-    text-align: center;
-}
-
-#skiploadbtn {
-    display: none;
-    width: 8rem;
-    height: 2rem;
-    font-weight: bold;
-    background-color: hsl(218, 100%, 50%);
-    color: hsl(0, 0%, 100%);
-    justify-self: center;
-    align-self: center;
-}
-
-#welcom {
-    font-size: 2rem;
-    font-weight: bold;
-    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);
-    background-clip: text;
-    color: transparent;
-}
-
-#loader {
-    float: left;
-    margin-top: 2rem;
-    margin-left: 5rem;
-    margin-bottom: 2rem;
-    width: 25rem;
-}
-
-#anotherlogo {
-    margin-top: 5rem;
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-bottom: 5rem;
-    width: 15rem;
-}
 body {
     text-align: justify;
     font-family: Arial, sans-serif;
@@ -154,4 +213,3 @@ body {
     margin: 0;
     padding: 0;
 }
-
