@@ -81,7 +81,7 @@
       button.addEventListener("click", function(event) {
         event.preventDefault();
         const usname = input.value;
-        fetch("http://localhost:3000/gaypercent", {
+        fetch("peakestgaymeter-git-main-greensprite67s-projects.vercel.app/gaypercent", {
           method:"POST",
           headers:{
             "Content-Type": "application/json"
@@ -311,7 +311,7 @@
         getDeviceType();
         async function checkforserver() {
           try {
-            const response = await fetch("http://localhost:3000/activateserver", {
+            const response = await fetch("peakestgaymeter-git-main-greensprite67s-projects.vercel.app/activateserver", {
               method:"GET",
               headers: {
                 "Content-Type": "application/json"
